@@ -1,0 +1,24 @@
+ORG 0000h
+
+
+NUM_0 EQU 00111111B
+NUM_1 EQU 00000110B 
+NUM_2 EQU 01011011B 
+NUM_3 EQU 01001111B
+NUM_4 EQU 01100110B 
+LET_C EQU 00111001B    
+ 
+start:
+;jb p3.0,button_1
+
+MOV P2,NUM_1
+;MOV P2,#0
+
+; button_1:
+; mov p1, NUM_4
+ ;CALL BELL_ON
+;ret    
+;BELL_ON:
+   ;SETB P1.7
+jmp start
+   END

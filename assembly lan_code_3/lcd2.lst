@@ -1,0 +1,298 @@
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 1
+
+
+
+
+
+       MCS-51 Family Macro Assembler   A S E M - 5 1   V 1.3
+       =====================================================
+
+
+
+	Source File:	D:\Electonices design\assembly lan_code_3\lcd2.asm
+	Object File:	D:\Electonices design\assembly lan_code_3\lcd2.hex
+	List File:	D:\Electonices design\assembly lan_code_3\lcd2.lst
+
+
+
+ Line  I  Addr  Code            Source
+
+    1:		N      0000	org 00h
+    2:	  0000	75 90 FF	mov p1,#0ffh
+    3:	  0003	74 0E		mov a,#0Eh
+    4:		B	 A0	rs bit p2.0
+    5:		B	 A1	rw bit p2.1
+    6:		B	 A2	en bit p2.2
+    7:	  0005			start:
+    8:	  0005	74 38		mov a, #38h
+    9:	  0007	11 F9		acall command
+   10:	  0009	12 01 23	call delay
+   11:	  000C	12 01 23	call delay
+   12:	  000F	74 0E		mov a,#0Eh
+   13:	  0011	11 F9		acall command
+   14:	  0013	12 01 23	call delay
+   15:	  0016	12 01 23	call delay
+   16:	  0019	74 01		mov a,#01h
+   17:	  001B	11 F9		acall command
+   18:	  001D	12 01 23	call delay
+   19:	  0020	12 01 23	call delay
+   20:	  0023	74 06		mov a,#06h
+   21:	  0025	11 F9		acall command
+   22:	  0027	12 01 23	call delay
+   23:	  002A	12 01 23	call delay
+   24:	  002D	74 80		mov a,#80h
+   25:	  002F	11 F9		acall command
+   26:	  0031	12 01 23	call delay
+   27:	  0034	12 01 23	call delay
+   28:	  0037	74 54		mov a,#'T'
+   29:	  0039	31 06		acall DataRead
+   30:	  003B	12 01 23	call delay
+   31:	  003E	74 48		mov a,#'H'
+   32:	  0040	31 06		acall DataRead
+   33:	  0042	12 01 23	call delay
+   34:	  0045	74 49		mov a,#'I'
+   35:	  0047	31 06		acall DataRead
+   36:	  0049	12 01 23	call delay
+   37:	  004C	74 53		mov a,#'S'
+   38:	  004E	31 06		acall DataRead
+   39:	  0050	12 01 23	call delay
+   40:	  0053	74 14		mov a,#14h
+   41:	  0055	11 F9		acall command
+   42:	  0057	12 01 23	call delay
+   43:	  005A	74 49		mov a,#'I'
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 2
+
+
+
+ Line  I  Addr  Code            Source
+
+   44:	  005C	31 06		acall DataRead
+   45:	  005E	12 01 23	call delay
+   46:	  0061	74 53		mov a,#'S'
+   47:	  0063	31 06		acall DataRead
+   48:	  0065	12 01 23	call delay
+   49:	  0068	74 14		mov a,#14h
+   50:	  006A	11 F9		acall command
+   51:	  006C	12 01 23	call delay
+   52:	  006F	74 45		mov a,#'E'
+   53:	  0071	31 06		acall DataRead
+   54:	  0073	12 01 23	call delay
+   55:	  0076	74 4C		mov a,#'L'
+   56:	  0078	31 06		acall DataRead
+   57:	  007A	12 01 23	call delay
+   58:	  007D	74 44		mov a,#'D'
+   59:	  007F	31 06		acall DataRead
+   60:	  0081	12 01 23	call delay
+   61:	  0084	74 49		mov a,#'I'
+   62:	  0086	31 06		acall DataRead
+   63:	  0088	12 01 23	call delay
+   64:	  008B	74 01		mov a,#01h
+   65:	  008D	11 F9		acall command
+   66:	  008F	12 01 23	call delay
+   67:	  0092	74 C0		mov a, #0C0h
+   68:	  0094	11 F9		acall command
+   69:	  0096	12 01 23	call delay
+   70:	  0099	12 01 23	call delay
+   71:	  009C	74 55		mov a,#'U'
+   72:	  009E	31 06		acall DataRead
+   73:	  00A0	12 01 23	call delay
+   74:	  00A3	74 14		mov a,#14h
+   75:	  00A5	11 F9		acall command
+   76:	  00A7	12 01 23	call delay
+   77:	  00AA	74 41		mov a,#'A'
+   78:	  00AC	31 06		acall DataRead
+   79:	  00AE	12 01 23	call delay
+   80:	  00B1	74 52		mov a,#'R'
+   81:	  00B3	31 06		acall DataRead
+   82:	  00B5	12 01 23	call delay
+   83:	  00B8	74 45		mov a,#'E'
+   84:	  00BA	31 06		acall DataRead
+   85:	  00BC	12 01 23	call delay
+   86:	  00BF	74 14		mov a,#14h
+   87:	  00C1	11 F9		acall command
+   88:	  00C3	12 01 23	call delay
+   89:	  00C6	74 57		mov a,#'W'
+   90:	  00C8	31 06		acall DataRead
+   91:	  00CA	12 01 23	call delay
+   92:	  00CD	74 45		mov a,#'E'
+   93:	  00CF	31 06		acall DataRead
+   94:	  00D1	12 01 23	call delay
+   95:	  00D4	74 4C		mov a,#'L'
+   96:	  00D6	31 06		acall DataRead
+   97:	  00D8	12 01 23	call delay
+   98:	  00DB	74 43		mov a,#'C'
+   99:	  00DD	31 06		acall DataRead
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 3
+
+
+
+ Line  I  Addr  Code            Source
+
+  100:	  00DF	12 01 23	call delay
+  101:	  00E2	74 4F		mov a,#'O'
+  102:	  00E4	31 06		acall DataRead
+  103:	  00E6	12 01 23	call delay
+  104:	  00E9	74 4D		mov a,#'M'
+  105:	  00EB	31 06		acall DataRead
+  106:	  00ED	12 01 23	call delay
+  107:	  00F0	74 45		mov a,#'E'
+  108:	  00F2	31 06		acall DataRead
+  109:	  00F4	12 01 23	call delay
+  110:	  00F7	01 05		jmp start
+  111:	  00F9			command:
+  112:	  00F9	31 13		acall ready
+  113:	  00FB	F5 90		mov p1,a
+  114:	  00FD	C2 A0		clr p2.0
+  115:	  00FF	C2 A1		clr p2.1
+  116:	  0101	D2 A2		setb p2.2
+  117:	  0103	C2 A2		clr p2.2
+  118:	  0105	22		ret
+  119:
+  120:	  0106			DataRead:
+  121:	  0106	31 13		acall ready
+  122:	  0108	F5 90		mov p1,a
+  123:	  010A	D2 A0		setb p2.0
+  124:	  010C	C2 A1		clr p2.1
+  125:	  010E	D2 A2		setb p2.2
+  126:	  0110	C2 A2		clr p2.2
+  127:	  0112	22		ret
+  128:
+  129:	  0113			ready:
+  130:	  0113	D2 97		setb p1.7
+  131:	  0115	C2 A0		clr p2.0
+  132:	  0117	D2 A1		setb p2.1
+  133:	  0119			here:
+  134:	  0119	D2 A2		setb p2.2
+  135:	  011B	C2 A2		clr p2.2
+  136:	  011D	60 FA		Jz here
+  137:	  011F	30 97 F7	jnb p1.7,here
+  138:	  0122	22		ret
+  139:
+  140:	  0123	78 FF		delay: mov r0,#255
+  141:	  0125	79 FF		delay1: mov r1,#255
+  142:	  0127	00		delay2:nop
+  143:	  0128	D9 FD		djnz r1,delay2
+  144:	  012A	D8 F9		djnz r0,delay1
+  145:	  012C	22		ret
+  146:				end
+
+
+
+
+
+                     register banks used:  ---
+
+                     no errors
+
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 4
+
+
+
+
+
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 5
+
+
+
+
+
+	       L I S T   O F   S Y M B O L S
+	       =============================
+
+
+SYMBOL				  TYPE     VALUE	LINE
+------------------------------------------------------------
+??ASEM_51			  NUMBER    8051
+??VERSION			  NUMBER    0130
+AC				  BIT	      D6
+ACC				  DATA	      E0
+B				  DATA	      F0
+COMMAND				  CODE	    00F9	 111
+CY				  BIT	      D7
+DATAREAD			  CODE	    0106	 120
+DELAY				  CODE	    0123	 140
+DELAY1				  CODE	    0125	 141
+DELAY2				  CODE	    0127	 142
+DPH				  DATA	      83
+DPL				  DATA	      82
+EA				  BIT	      AF
+EN				  BIT	      A2	   6
+ES				  BIT	      AC
+ET0				  BIT	      A9
+ET1				  BIT	      AB
+EX0				  BIT	      A8
+EX1				  BIT	      AA
+EXTI0				  CODE	    0003
+EXTI1				  CODE	    0013
+F0				  BIT	      D5
+HERE				  CODE	    0119	 133
+IE				  DATA	      A8
+IE0				  BIT	      89
+IE1				  BIT	      8B
+INT0				  BIT	      B2
+INT1				  BIT	      B3
+IP				  DATA	      B8
+IT0				  BIT	      88
+IT1				  BIT	      8A
+OV				  BIT	      D2
+P				  BIT	      D0
+P0				  DATA	      80
+P1				  DATA	      90
+P2				  DATA	      A0
+P3				  DATA	      B0
+PCON				  DATA	      87
+PS				  BIT	      BC
+PSW				  DATA	      D0
+PT0				  BIT	      B9
+PT1				  BIT	      BB
+PX0				  BIT	      B8
+PX1				  BIT	      BA
+RB8				  BIT	      9A
+RD				  BIT	      B7
+READY				  CODE	    0113	 129
+REN				  BIT	      9C
+RESET				  CODE	    0000
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 6
+
+
+
+SYMBOL				  TYPE     VALUE	LINE
+------------------------------------------------------------
+RI				  BIT	      98
+RS				  BIT	      A0	   4
+RS0				  BIT	      D3
+RS1				  BIT	      D4
+RW				  BIT	      A1	   5
+RXD				  BIT	      B0
+SBUF				  DATA	      99
+SCON				  DATA	      98
+SINT				  CODE	    0023
+SM0				  BIT	      9F
+SM1				  BIT	      9E
+SM2				  BIT	      9D
+SP				  DATA	      81
+START				  CODE	    0005	   7
+T0				  BIT	      B4
+T1				  BIT	      B5
+TB8				  BIT	      9B
+TCON				  DATA	      88
+TF0				  BIT	      8D
+TF1				  BIT	      8F
+TH0				  DATA	      8C
+TH1				  DATA	      8D
+TI				  BIT	      99
+TIMER0				  CODE	    000B
+TIMER1				  CODE	    001B
+TL0				  DATA	      8A
+TL1				  DATA	      8B
+TMOD				  DATA	      89
+TR0				  BIT	      8C
+TR1				  BIT	      8E
+TXD				  BIT	      B1
+WR				  BIT	      B6

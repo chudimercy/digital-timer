@@ -1,0 +1,245 @@
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 1
+
+
+
+
+
+       MCS-51 Family Macro Assembler   A S E M - 5 1   V 1.3
+       =====================================================
+
+
+
+	Source File:	D:\Electonices design\assembly lan_code_3\dot_matrix.asm
+	Object File:	D:\Electonices design\assembly lan_code_3\dot_matrix.hex
+	List File:	D:\Electonices design\assembly lan_code_3\dot_matrix.lst
+
+
+
+ Line  I  Addr  Code            Source
+
+    1:		N      0000	org 0h
+    2:	  0000	75 B0 FF	     mov P3,#0ffh
+    3:	  0003	75 90 00	     mov P1,#0
+    4:				    ; mov 41,#0ffh
+    5:				     ;mov 42,#0ffh
+    6:				    ;mov 43,#0ffh
+    7:				    ; mov 44,#0ffh
+    8:				     ;mov 45,#0ffh
+    9:	  0006			start:
+   10:	  0006	75 90 1B	     mov p1,#1Bh
+   11:	  0009	12 00 B0	     call delay
+   12:	  000C	80 F8		    jmp start
+   13:
+   14:	  000E	75 29 FF	LETW:MOV 41,#11111111B
+   15:	  0011	75 2A 40	     MOV 42,#01000000B
+   16:	  0014	75 2B 10	     MOV 43,#00010000B
+   17:	  0017	75 2C 40	     MOV 44,#01000000B
+   18:	  001A	75 2D FF	     MOV 45,#11111111B
+   19:	  001D	22		     RET
+   20:	  001E	75 29 FF	LETE:MOV 41,#11111111B
+   21:	  0021	75 2A 91	     MOV 42,#10010001B
+   22:	  0024	75 2B 91	     MOV 43,#10010001B
+   23:	  0027	75 2C 91	     MOV 44,#10010001B
+   24:	  002A	75 2D 00	     MOV 45,#00000000B
+   25:	  002D	22		     RET
+   26:	  002E	75 29 FF	LETL:MOV 41,#11111111B
+   27:	  0031	75 2A 80	     MOV 42,#10000000B
+   28:	  0034	75 2B 80	     MOV 43,#10000000B
+   29:	  0037	75 2C 80	     MOV 44,#10000000B
+   30:	  003A	75 2D 80	     MOV 45,#10000000B
+   31:	  003D	22		     RET
+   32:	  003E	75 29 7D	LETC:MOV 41,#01111101B
+   33:	  0041	75 2A 83	     MOV 42,#10000011B
+   34:	  0044	75 2B 83	     MOV 43,#10000011B
+   35:	  0047	75 2C 83	     MOV 44,#10000011B
+   36:	  004A	75 2D 7D	     MOV 45,#01111101B
+   37:	  004D	22		     RET
+   38:	  004E	75 29 7D	LETO:MOV 41,#01111101B
+   39:	  0051	75 2A 83	     MOV 42,#10000011B
+   40:	  0054	75 2B 83	     MOV 43,#10000011B
+   41:	  0057	75 2C 83	     MOV 44,#10000011B
+   42:	  005A	75 2D 7D	     MOV 45,#01111101B
+   43:	  005D	22		     RET
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 2
+
+
+
+ Line  I  Addr  Code            Source
+
+   44:	  005E	75 29 FF	LETM:MOV 41,#11111111B
+   45:	  0061	75 2A 07	     MOV 42,#00000111B
+   46:	  0064	75 2B 19	     MOV 43,#00011001B
+   47:	  0067	75 2C 03	     MOV 44,#00000011B
+   48:	  006A	75 2D FF	     MOV 45,#11111111B
+   49:	  006D	22		     RET
+   50:
+   51:
+   52:
+   53:
+   54:	  006E	AE 29		SCROLL:MOV R6,41
+   55:	  0070	12 00 87	      CALL SHIFT
+   56:	  0073	AE 2A		      MOV R6,42
+   57:	  0075	12 00 87	      CALL SHIFT
+   58:	  0078	AE 2B		      MOV R6,43
+   59:	  007A	12 00 87	      CALL SHIFT
+   60:	  007D	AE 2C		      MOV R6,44
+   61:	  007F	12 00 87	      CALL SHIFT
+   62:	  0082	AE 2D		      MOV R6,45
+   63:	  0084	12 00 87	      CALL SHIFT
+   64:
+   65:	  0087			SHIFT:
+   66:	  0087	85 39 3A	      MOV 58,57
+   67:	  008A	85 38 39	      MOV 57,56
+   68:	  008D	85 37 38	      MOV 56,55
+   69:	  0090	85 36 37	      MOV 55,54
+   70:	  0093	85 35 36	      MOV 54,53
+   71:	  0096	85 34 35	      MOV 53,52
+   72:	  0099	85 33 34	      MOV 52,51
+   73:	  009C	85 32 33	      MOV 51,50
+   74:	  009F	8E 32		      MOV 50,R6
+   75:	  00A1	22		      ret
+   76:
+   77:	  00A2			play:
+   78:	  00A2	7C 05		       mov r4,#5
+   79:	  00A4	11 6E		chudi: call SCROLL
+   80:	  00A6	DC FC		       DJNZ r4,chudi
+   81:	  00A8	22		       ret
+   82:
+   83:	  00A9			clock:
+   84:	  00A9	C2 B0		     clr P3.0
+   85:	  00AB	D2 B0		     setb P3.0
+   86:	  00AD	C2 B0		     clr  P3.0
+   87:	  00AF	22		     ret
+   88:	  00B0			delay:
+   89:	  00B0	79 16		      mov R1,#22
+   90:	  00B2	78 16		nice: mov R0,#22
+   91:	  00B4	00		Chux: NOP
+   92:	  00B5	D8 FD		      DJNZ R0,Chux
+   93:	  00B7	D9 F9		      DJNZ R1,nice
+   94:	  00B9	22		      RET
+   95:
+   96:				      end
+
+
+
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 3
+
+
+
+
+
+                     register banks used:  ---
+
+                     no errors
+
+
+
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 4
+
+
+
+
+
+	       L I S T   O F   S Y M B O L S
+	       =============================
+
+
+SYMBOL				  TYPE     VALUE	LINE
+------------------------------------------------------------
+??ASEM_51			  NUMBER    8051
+??VERSION			  NUMBER    0130
+AC				  BIT	      D6
+ACC				  DATA	      E0
+B				  DATA	      F0
+CHUDI				  CODE	    00A4	  79
+CHUX				  CODE	    00B4	  91
+CLOCK				  CODE	    00A9	  83
+CY				  BIT	      D7
+DELAY				  CODE	    00B0	  88
+DPH				  DATA	      83
+DPL				  DATA	      82
+EA				  BIT	      AF
+ES				  BIT	      AC
+ET0				  BIT	      A9
+ET1				  BIT	      AB
+EX0				  BIT	      A8
+EX1				  BIT	      AA
+EXTI0				  CODE	    0003
+EXTI1				  CODE	    0013
+F0				  BIT	      D5
+IE				  DATA	      A8
+IE0				  BIT	      89
+IE1				  BIT	      8B
+INT0				  BIT	      B2
+INT1				  BIT	      B3
+IP				  DATA	      B8
+IT0				  BIT	      88
+IT1				  BIT	      8A
+LETC				  CODE	    003E	  32
+LETE				  CODE	    001E	  20
+LETL				  CODE	    002E	  26
+LETM				  CODE	    005E	  44
+LETO				  CODE	    004E	  38
+LETW				  CODE	    000E	  14
+NICE				  CODE	    00B2	  90
+OV				  BIT	      D2
+P				  BIT	      D0
+P0				  DATA	      80
+P1				  DATA	      90
+P2				  DATA	      A0
+P3				  DATA	      B0
+PCON				  DATA	      87
+PLAY				  CODE	    00A2	  77
+PS				  BIT	      BC
+PSW				  DATA	      D0
+PT0				  BIT	      B9
+PT1				  BIT	      BB
+PX0				  BIT	      B8
+PX1				  BIT	      BA
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 5
+
+
+
+SYMBOL				  TYPE     VALUE	LINE
+------------------------------------------------------------
+RB8				  BIT	      9A
+RD				  BIT	      B7
+REN				  BIT	      9C
+RESET				  CODE	    0000
+RI				  BIT	      98
+RS0				  BIT	      D3
+RS1				  BIT	      D4
+RXD				  BIT	      B0
+SBUF				  DATA	      99
+SCON				  DATA	      98
+SCROLL				  CODE	    006E	  54
+SHIFT				  CODE	    0087	  65
+SINT				  CODE	    0023
+SM0				  BIT	      9F
+SM1				  BIT	      9E
+SM2				  BIT	      9D
+SP				  DATA	      81
+START				  CODE	    0006	   9
+T0				  BIT	      B4
+T1				  BIT	      B5
+TB8				  BIT	      9B
+TCON				  DATA	      88
+TF0				  BIT	      8D
+TF1				  BIT	      8F
+TH0				  DATA	      8C
+TH1				  DATA	      8D
+TI				  BIT	      99
+TIMER0				  CODE	    000B
+TIMER1				  CODE	    001B
+TL0				  DATA	      8A
+TL1				  DATA	      8B
+TMOD				  DATA	      89
+TR0				  BIT	      8C
+TR1				  BIT	      8E
+TXD				  BIT	      B1
+WR				  BIT	      B6

@@ -1,0 +1,218 @@
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 1
+
+
+
+
+
+       MCS-51 Family Macro Assembler   A S E M - 5 1   V 1.3
+       =====================================================
+
+
+
+	Source File:	D:\Electonices design\assembly lan_code_3\led1.asm
+	Object File:	D:\Electonices design\assembly lan_code_3\led1.hex
+	List File:	D:\Electonices design\assembly lan_code_3\led1.lst
+
+
+
+ Line  I  Addr  Code            Source
+
+    1:		N      0000	org 00h
+    2:	  0000	75 A0 00	      mov p2,#0
+    3:	  0003	7C 0A		start:mov r4,#10
+    4:	  0005			   stage1:
+    5:	  0005	75 A0 00	         mov p2,#00h
+    6:	  0008	12 00 B4	         call delay
+    7:	  000B	75 A0 FF	         mov p2,#0ffh
+    8:	  000E	12 00 B4	         call delay
+    9:	  0011	DC 02		         djnz r4,stage2_1
+   10:	  0013	7C 0A		         mov r4,#10
+   11:
+   12:	  0015			  stage2_1:
+   13:	  0015	75 A0 01	mov P2, #00000001b
+   14:	  0018	12 00 B4	call delay
+   15:	  001B	75 A0 02	mov P2, #00000010b
+   16:	  001E	12 00 B4	call delay
+   17:	  0021	75 A0 04	mov P2, #00000100b
+   18:	  0024	12 00 B4	call delay
+   19:	  0027	75 A0 08	mov P2, #00001000b
+   20:	  002A	12 00 B4	call delay
+   21:	  002D	75 A0 10	mov P2, #00010000b
+   22:	  0030	12 00 B4	call delay
+   23:	  0033	75 A0 10	mov P2, #0010000b
+   24:	  0036	12 00 B4	call delay
+   25:	  0039	75 A0 40	mov P2, #01000000b
+   26:	  003C	12 00 B4	call delay
+   27:	  003F	75 A0 80	mov P2, #10000000b
+   28:	  0042	12 00 B4	call delay
+   29:	  0045	DC 02		 djnz r4,stage2
+   30:	  0047	7C 0A		         mov r4,#10
+   31:	  0049			   stage2:
+   32:	  0049	75 80 01	         mov p0,#01h
+   33:	  004C	12 00 B4	         call delay
+   34:	  004F	75 80 02	         mov p0,#02h
+   35:	  0052	12 00 B4	         call delay
+   36:	  0055	75 80 04	         mov p0,#04h
+   37:	  0058	12 00 B4	         call delay
+   38:	  005B	75 80 08	         mov p0,#08h
+   39:	  005E	12 00 B4	         call delay
+   40:	  0061	75 80 10	         mov p0,#10h
+   41:	  0064	12 00 B4	         call delay
+   42:	  0067	75 80 20	         mov p0,#20h
+   43:	  006A	12 00 B4	         call delay
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 2
+
+
+
+ Line  I  Addr  Code            Source
+
+   44:	  006D	75 80 40	         mov p0,#40h
+   45:	  0070	12 00 B4	         call delay
+   46:	  0073	75 80 80	         mov p0,#80h
+   47:	  0076	12 00 B4	         call delay
+   48:	  0079	DC 02		         djnz r4,stage3
+   49:	  007B	7C 0A		         mov r4,#10
+   50:	  007D			    stage3:
+   51:	  007D	75 80 FC	         mov p0,#0fch
+   52:	  0080	12 00 B4	         call delay
+   53:	  0083	75 80 FF	         mov p0,#0ffh
+   54:	  0086	12 00 B4	         call delay
+   55:	  0089	75 80 F3	         mov p0,#0f3h
+   56:	  008C	12 00 B4	         call delay
+   57:	  008F	75 80 FF	         mov p0,#0ffh
+   58:	  0092	12 00 B4	         call delay
+   59:	  0095	75 80 CF	         mov p0,#0cfh
+   60:	  0098	12 00 B4	         call delay
+   61:	  009B	75 80 FF	         mov p0,#0ffh
+   62:	  009E	12 00 B4	         call delay
+   63:	  00A1	75 80 3F	         mov p0,#03fh
+   64:	  00A4	12 00 B4	         call delay
+   65:	  00A7	75 80 FF	         mov p0,#0ffh
+   66:	  00AA	12 00 B4	         call delay
+   67:	  00AD	DC 56		         djnz r4,stage1
+						       ^
+			  @@@@@ address out of range @@@@@
+
+   68:	  00AF	7C 0A		         mov r4,#10
+   69:	  00B1	02 00 03	            Ljmp start
+   70:
+   71:	  00B4			delay:
+   72:	  00B4	79 E1		     mov R1, #225
+   73:	  00B6	78 E1		     Slow: mov R0, #225
+   74:	  00B8	00		     Slower: NOP
+   75:	  00B9	D8 FD		     DJNZ R0, slower
+   76:	  00BB	D9 F9		     DJNZ R1, slow
+   77:	  00BD	22		     RET
+   78:				 END
+
+
+
+
+
+                     register banks used:  ---
+
+                     1 error detected
+
+
+
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 3
+
+
+
+
+
+	       L I S T   O F   S Y M B O L S
+	       =============================
+
+
+SYMBOL				  TYPE     VALUE	LINE
+------------------------------------------------------------
+??ASEM_51			  NUMBER    8051
+??VERSION			  NUMBER    0130
+AC				  BIT	      D6
+ACC				  DATA	      E0
+B				  DATA	      F0
+CY				  BIT	      D7
+DELAY				  CODE	    00B4	  71
+DPH				  DATA	      83
+DPL				  DATA	      82
+EA				  BIT	      AF
+ES				  BIT	      AC
+ET0				  BIT	      A9
+ET1				  BIT	      AB
+EX0				  BIT	      A8
+EX1				  BIT	      AA
+EXTI0				  CODE	    0003
+EXTI1				  CODE	    0013
+F0				  BIT	      D5
+IE				  DATA	      A8
+IE0				  BIT	      89
+IE1				  BIT	      8B
+INT0				  BIT	      B2
+INT1				  BIT	      B3
+IP				  DATA	      B8
+IT0				  BIT	      88
+IT1				  BIT	      8A
+OV				  BIT	      D2
+P				  BIT	      D0
+P0				  DATA	      80
+P1				  DATA	      90
+P2				  DATA	      A0
+P3				  DATA	      B0
+PCON				  DATA	      87
+PS				  BIT	      BC
+PSW				  DATA	      D0
+PT0				  BIT	      B9
+PT1				  BIT	      BB
+PX0				  BIT	      B8
+PX1				  BIT	      BA
+RB8				  BIT	      9A
+RD				  BIT	      B7
+REN				  BIT	      9C
+RESET				  CODE	    0000
+RI				  BIT	      98
+RS0				  BIT	      D3
+RS1				  BIT	      D4
+RXD				  BIT	      B0
+SBUF				  DATA	      99
+SCON				  DATA	      98
+SINT				  CODE	    0023
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 4
+
+
+
+SYMBOL				  TYPE     VALUE	LINE
+------------------------------------------------------------
+SLOW				  CODE	    00B6	  73
+SLOWER				  CODE	    00B8	  74
+SM0				  BIT	      9F
+SM1				  BIT	      9E
+SM2				  BIT	      9D
+SP				  DATA	      81
+STAGE1				  CODE	    0005	   4
+STAGE2				  CODE	    0049	  31
+STAGE2_1			  CODE	    0015	  12
+STAGE3				  CODE	    007D	  50
+START				  CODE	    0003	   3
+T0				  BIT	      B4
+T1				  BIT	      B5
+TB8				  BIT	      9B
+TCON				  DATA	      88
+TF0				  BIT	      8D
+TF1				  BIT	      8F
+TH0				  DATA	      8C
+TH1				  DATA	      8D
+TI				  BIT	      99
+TIMER0				  CODE	    000B
+TIMER1				  CODE	    001B
+TL0				  DATA	      8A
+TL1				  DATA	      8B
+TMOD				  DATA	      89
+TR0				  BIT	      8C
+TR1				  BIT	      8E
+TXD				  BIT	      B1
+WR				  BIT	      B6
